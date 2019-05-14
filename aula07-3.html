@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aula 07 Exemplo 03</title>
+</head>
+
+<body>
+
+    <h1>Lista de Presença</h1>
+    <p>Nome do aluno: <span id="nome">Fulano</span>.</p>
+    <button id="adicionar">Adicionar</button>
+    <h1>Presentes <span id="total"></span> </h1>
+    <ul id="presentes"></ul>
+
+</body>
+<script>
+
+    var eNome, eAdicionar, ePresentes;
+
+    eNome = document.getElementById("nome");
+    eAdicionar = document.getElementById("adicionar");
+    ePresentes = document.getElementById("presentes");
+    eTotal = document.getElementById("total");
+
+    eNome.contentEditable = "TRUE";
+
+    
+
+    adicionar.addEventListener("click", function adicionarPresente() {
+        var nome = eNome.textContent;
+        var item = "<li>" + nome + "</li>";
+        ePresentes.innerHTML += item;
+        eTotal.textContent = ePresentes.children.length;
+        
+
+    });
+
+
+</script>
+
+</html>
