@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07</title>
+</head>
+
+<body>
+    <h1>Lista de Convidados</h1>
+    <form name="convidado">
+        <input type="text" name="nome">
+        <input type="text" name="idade">
+        <input type="submit">
+        <input type="reset">
+    </form>
+
+    <ul>
+
+    </ul>
+
+    <button id="calcula">Calcula Novo/Velho</button>
+    <p></p>
+</body>
+
+<script>
+
+        var convidados = [];
+        var lista = document.getElementsByTagName("ul")[0]; 
+        var saida = document.querySelector("p");
+        var botaoCalcula = document.querySelector("#calcula");
+
+        document.forms.convidado.addEventListener("submit", processaEnvio);
+        botaoCalcula.addEventListener("click", calculaMaisNovoVelho);
+        
+        function processaEnvio(e){
+            e.preventDefault();
+            
+            var nome = document.forms.convidado.nome.value;
+            var idade = document.forms.convidado.idade.value;
+            var novoConvidado = {"nome":nome, "idade":idade};
+            var novoLi = document.createElement("li");
+            convidados.push(novoConvidado);
+            //console.log(nome, idade);
+            
+            novoLi.textContent = novoConvidado.nome + ", " +  idade + " anos.";
+            
+            lista.appendChild(novoLi);
+
+            document.forms.convidado.reset();
+            document.forms.convidado.nome.focus();
+        }
+
+        function calculaMaisNovoVelho(){
+            if(convidados.length == 0){
+                saida.textContent = "Não existem convidados cadastrados";
+            } else {
+                var novo = convidados[0];
+                var velho = convidados[0];
+                for(var i = 0; i < convidados.length; i++){
+                    var conv = convidados[i];
+                    if(conv.idade < novo.idade){
+                        novo = conv;
+                    }
+                    if(conv.idade > velho.idade){
+                        velho = conv;
+                    }
+
+                }
+                saida.textContent = "O " + novo.nome + " é o mais novo e " + velho.nome + " é o mais velho!";
+            }
+        }
+
+
+
+</script>
+
+</html>
