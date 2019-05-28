@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 09</title>
+</head>
+
+<body>
+
+    <form name="cadastro">
+        <div><label>Nome: <input type="text" name="nome"></label></div>
+        <div><label>Idade: <input type="number" name="idade"></label></div>
+        <div><label>Cidade: <input type="text" name="cidade"></label></div>
+        <input type="submit">
+        <input type="reset">
+    </form>
+
+    <table border="3">
+        <tr>
+            <td>Nome</td>        
+            <td>Idade</td>   
+            <td>Cidade</td>
+        </tr>
+
+        <tr>
+            <td>Igor</td>
+            <td>21</td>
+            <td>JF</td>
+        </tr>
+
+        <tr>
+            <td>Josue</td>
+            <td>21</td>      
+            <td>JF</td>
+        </tr>
+
+        <tr>
+            <td>Maria</td>       
+            <td>21</td>      
+            <td>JF</td>
+        </tr>
+
+        <tr>
+            <td>Fernanda</td>    
+            <td>21</td>      
+            <td>JF</td>
+        </tr>
+    </table>    
+    
+</body> 
+
+<script>
+
+    var formCadastro = document.forms.cadastro;
+    var corpoTabela =  document.querySelector("tbody");
+
+    formCadastro.addEventListener("submit", processaCadastro);
+
+    function processaCadastro(e){
+        e.preventDefault();
+        var nome = formCadastro.nome.value;
+        var idade =formCadastro.idade.value;
+        var cidade = formCadastro.cidade.value;
+        jogaLinhaNaTabela(nome, idade, cidade);
+    }
+
+    function jogaLinhaNaTabela(nome, idade, cidade){
+        var tdNome = document.createElement("td");
+        tdNome.textContent = nome;
+        
+        var tdIdade = document.createElement("td");
+        tdIdade.textContent = idade;
+        
+        var tdCidade = document.createElement("td");
+        tdCidade.textContent = cidade;
+
+        var trLinha = document.createElement("tr");
+
+
+        trLinha.appendChild(tdNome);
+        trLinha.appendChild(tdIdade);
+        trLinha.appendChild(tdCidade);
+        corpoTabela.appendChild(trLinha);
+    }
+
+</script>
+</html>
