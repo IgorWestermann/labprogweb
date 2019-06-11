@@ -1,0 +1,19 @@
+h1{
+    color: blue;
+}
+
+li{
+    font-size: 1.2em;
+}
+
+#i01{
+    color: blueviolet;
+}
+
+li.fruta{
+    color: brown;
+}
+
+li.legume{
+    color: chartreuse;
+}
